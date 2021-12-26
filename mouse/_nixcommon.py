@@ -32,8 +32,7 @@ def make_uinput():
     fcntl.ioctl(uinput, UI_SET_EVBIT, EV_KEY)
 
     UI_SET_KEYBIT = 0x40045565
-    for i in range(256):
-        fcntl.ioctl(uinput, UI_SET_KEYBIT, i)
+    fcntl.ioctl(uinput, UI_SET_KEYBIT, 0x00000110)
 
     BUS_USB = 0x03
     uinput_user_dev = "80sHHHHi64i64i64i64i"
