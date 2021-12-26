@@ -1,8 +1,10 @@
 # 0.8.0
-- [All] Invokes callback with args when the right button is double clicked.
+- [All] Invokes callback with args when the right button is pressed, clicked and double clicked.
+- [All] Invokes callback with args when the middle button is pressed, clicked and double clicked.
+- [All] Add ability to set default fps for mouse.move().
+- [All] Add missings definitions for right, left and middle clicks.
+- [All] Add missings tests for right, left and middle clicks.
 - [Linux] Fix linux segfault when no display.
-- [All] Add ability to set default fps for mouse.move.
-- [All] Invokes callback with args when the right button is pressed.
 - [Linux] Allow non-root users of appropriate groups to use module in Linux.
 - [Linux] Fix mouse movements/hooks work, but mouse clicks do not.
 ##### Known issues:
