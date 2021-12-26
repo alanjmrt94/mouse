@@ -178,6 +178,10 @@ def on_pressed(callback, args=()):
     """ Invokes `callback` with `args` when the left button is pressed. """
     return on_button(callback, args, [LEFT], [DOWN])
 
+def on_right_pressed(callback, args=()):
+    """ Invokes `callback` with `args` when the right button is pressed. """
+    return on_button(callback, args, [RIGHT], [DOWN])
+    
 def on_click(callback, args=()):
     """ Invokes `callback` with `args` when the left button is clicked. """
     return on_button(callback, args, [LEFT], [UP])
