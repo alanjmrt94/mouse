@@ -103,27 +103,49 @@ def double_click(button=LEFT):
     click(button)
     click(button)
 
-def is_right_pressed():
+def right_is_pressed(button=RIGHT):
     """ Returns True if the given button is currently pressed. """
     _listener.start_if_necessary()
-    return RIGHT in _pressed_events
+    return button in _pressed_events
 
-def right_press():
+def right_press(button=RIGHT):
     """ Presses the given button (but doesn't release). """
-    _os_mouse.press(RIGHT)
+    _os_mouse.press(button)
 
-def right_release():
+def right_release(button=RIGHT):
     """ Releases the given button. """
-    _os_mouse.release(RIGHT)
+    _os_mouse.release(button)
 
-def right_click():
+def right_click(button=RIGHT):
     """ Sends a right click with the given button. """
-    click(RIGHT)
+    click(button)
 
-def double_right_click():
+def right_double_click(button=RIGHT):
     """ Sends a double right click with the given button. """
-    click(RIGHT)
-    click(RIGHT)
+    click(button)
+    click(button)
+
+def middle_is_pressed(button=MIDDLE):
+    """ Returns True if the given button is currently pressed. """
+    _listener.start_if_necessary()
+    return button in _pressed_events
+
+def middle_press(button=MIDDLE):
+    """ Presses the given button (but doesn't release). """
+    _os_mouse.press(button)
+
+def middle_release(button=MIDDLE):
+    """ Releases the given button. """
+    _os_mouse.release(button)
+
+def middle_click(button=MIDDLE):
+    """ Sends a middle click with the given button. """
+    click(button)
+
+def middle_double_click(button=MIDDLE):
+    """ Sends a double middle click with the given button. """
+    click(button)
+    click(button)
 
 def wheel(delta=1):
     """ Scrolls the wheel `delta` clicks. Sign indicates direction. """
@@ -195,10 +217,6 @@ def on_button(callback, args=(), buttons=(LEFT, MIDDLE, RIGHT, X, X2), types=(UP
 def on_pressed(callback, args=()):
     """ Invokes `callback` with `args` when the left button is pressed. """
     return on_button(callback, args, [LEFT], [DOWN])
-
-def on_right_pressed(callback, args=()):
-    """ Invokes `callback` with `args` when the right button is pressed. """
-    return on_button(callback, args, [RIGHT], [DOWN])
     
 def on_click(callback, args=()):
     """ Invokes `callback` with `args` when the left button is clicked. """
@@ -210,15 +228,23 @@ def on_double_click(callback, args=()):
     """
     return on_button(callback, args, [LEFT], [DOUBLE])
 
+def on_right_pressed(callback, args=()):
+    """ Invokes `callback` with `args` when the right button is pressed. """
+    return on_button(callback, args, [RIGHT], [DOWN])
+
 def on_right_click(callback, args=()):
     """ Invokes `callback` with `args` when the right button is clicked. """
     return on_button(callback, args, [RIGHT], [UP])
 
 def on_right_double_click(callback, args=()):
     """
-    Invokes `callback` with `args` when the left button is double clicked.
+    Invokes `callback` with `args` when the right button is double clicked.
     """
     return on_button(callback, args, [RIGHT], [DOUBLE])
+
+def on_middle_pressed(callback, args=()):
+    """ Invokes `callback` with `args` when the middle button is pressed. """
+    return on_button(callback, args, [MIDDLE], [DOWN])
 
 def on_middle_click(callback, args=()):
     """ Invokes `callback` with `args` when the middle button is clicked. """
@@ -226,7 +252,7 @@ def on_middle_click(callback, args=()):
 
 def on_middle_double_click(callback, args=()):
     """
-    Invokes `callback` with `args` when the left button is double clicked.
+    Invokes `callback` with `args` when the middle button is double clicked.
     """
     return on_button(callback, args, [MIDDLE], [DOUBLE])
 
