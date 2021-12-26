@@ -103,8 +103,26 @@ def double_click(button=LEFT):
     click(button)
     click(button)
 
+def is_right_pressed():
+    """ Returns True if the given button is currently pressed. """
+    _listener.start_if_necessary()
+    return RIGHT in _pressed_events
+
+def right_press():
+    """ Presses the given button (but doesn't release). """
+    _os_mouse.press(RIGHT)
+
+def right_release():
+    """ Releases the given button. """
+    _os_mouse.release(RIGHT)
+
 def right_click():
     """ Sends a right click with the given button. """
+    click(RIGHT)
+
+def double_right_click():
+    """ Sends a double right click with the given button. """
+    click(RIGHT)
     click(RIGHT)
 
 def wheel(delta=1):
