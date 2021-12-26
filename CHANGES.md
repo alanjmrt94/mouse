@@ -1,8 +1,19 @@
+# 0.8.0
+- [All] Invokes callback with args when the right button is double clicked.
+- [Linux] Fix linux segfault when no display.
+- [All] Add ability to set default fps for mouse.move.
+- [All] Invokes callback with args when the right button is pressed.
+- [Linux] Allow non-root users of appropriate groups to use module in Linux.
+- [Linux] Fix mouse movements/hooks work, but mouse clicks do not.
+##### Known issues:
+- Segmentation fault (core dumped) when calling Gtk.menu popup (Linux) #104
+
+
 # 0.7.1
 
-- Fixed errors and incorrect information on setup.py.
-- Fixed Windows segfault.
-- Applied pending bug fixes.
+- [All] Fixed errors and incorrect information on setup.py.
+- [Windows] Fixed Windows segfault.
+- [All] Applied pending bug fixes.
 
 
 # 0.7.0
