@@ -1,4 +1,4 @@
-# 0.8.0
+# 0.8.0 (untested)
 - [All] Invokes callback with args when the right button is pressed, clicked and double clicked.
 - [All] Invokes callback with args when the middle button is pressed, clicked and double clicked.
 - [All] Add ability to set default fps for mouse.move().
@@ -8,7 +8,7 @@
 - [Linux] Allow non-root users of appropriate groups to use module in Linux.
 - [Linux] Fix mouse movements/hooks work, but mouse clicks do not.
 ##### Known issues:
-- Segmentation fault (core dumped) when calling Gtk.menu popup (Linux) #104
+- Segmentation fault (core dumped) when calling Gtk.menu popup (Linux) (See #104)
 
 
 # 0.7.1
