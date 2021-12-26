@@ -193,18 +193,27 @@ class TestMouse(unittest.TestCase):
         self.assertFalse(self.triggers(mouse.on_click, [(DOWN, LEFT)]))
         self.assertFalse(self.triggers(mouse.on_click, [(DOWN, RIGHT)]))
 
+        self.assertTrue(self.triggers(mouse.on_right_click, [(UP, RIGHT)]))
+        self.assertFalse(self.triggers(mouse.on_right_click, [(UP, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_right_click, [(DOWN, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_right_click, [(DOWN, RIGHT)]))
+
+        self.assertTrue(self.triggers(mouse.on_middle_click, [(UP, MIDDLE)]))
+        self.assertFalse(self.triggers(mouse.on_middle_click, [(UP, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_middle_click, [(DOWN, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_middle_click, [(DOWN, RIGHT)]))
+
         self.assertTrue(self.triggers(mouse.on_double_click, [(DOUBLE, LEFT)]))
         self.assertFalse(self.triggers(mouse.on_double_click, [(DOUBLE, RIGHT)]))
         self.assertFalse(self.triggers(mouse.on_double_click, [(DOWN, RIGHT)]))
 
-        self.assertTrue(self.triggers(mouse.on_right_click, [(UP, RIGHT)]))
-        self.assertTrue(self.triggers(mouse.on_middle_click, [(UP, MIDDLE)]))
-
-        self.assertTrue(self.triggers(mouse.on_double_right_click, [(DOUBLE, RIGHT)]))
-        self.assertFalse(self.triggers(mouse.on_double_right_click, [(DOUBLE, LEFT)]))
-        self.assertFalse(self.triggers(mouse.on_double_right_click, [(DOWN, LEFT)]))
+        self.assertTrue(self.triggers(mouse.on_right_double_click, [(DOUBLE, RIGHT)]))
+        self.assertFalse(self.triggers(mouse.on_right_double_click, [(DOUBLE, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_right_double_click, [(DOWN, RIGHT)]))
 
         self.assertTrue(self.triggers(mouse.on_middle_double_click, [(DOUBLE, MIDDLE)]))
+        self.assertFalse(self.triggers(mouse.on_middle_double_click, [(DOUBLE, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_middle_double_click, [(DOWN, RIGHT)]))
 
     def test_wait(self):
         # If this fails it blocks. Unfortunately, but I see no other way of testing.
