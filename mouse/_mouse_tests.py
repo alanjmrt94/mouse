@@ -119,11 +119,17 @@ class TestMouse(unittest.TestCase):
         self.assertEqual(self.flush_events(), [(DOWN, LEFT), (UP, LEFT)])
         mouse.double_click()
         self.assertEqual(self.flush_events(), [(DOWN, LEFT), (UP, LEFT), (DOWN, LEFT), (UP, LEFT)])
+        mouse.press(X2)
+        self.assertEqual(self.flush_events(), [(DOWN, X2)])
+        mouse.right_press()
+        self.assertEqual(self.flush_events(), [(DOWN, RIGHT)])
+        mouse.right_release()
+        self.assertEqual(self.flush_events(), [(UP, RIGHT)])
         mouse.right_click()
         self.assertEqual(self.flush_events(), [(DOWN, RIGHT), (UP, RIGHT)])
-        mouse.click(RIGHT)
-        self.assertEqual(self.flush_events(), [(DOWN, RIGHT), (UP, RIGHT)])
-        mouse.press(X2)
+        mouse.double_right_click()
+        self.assertEqual(self.flush_events(), [(DOWN, RIGHT), (UP, RIGHT), (DOWN, RIGHT), (UP, RIGHT)])
+        mouse.right_press(X2)
         self.assertEqual(self.flush_events(), [(DOWN, X2)])
 
     def test_position(self):
@@ -193,6 +199,12 @@ class TestMouse(unittest.TestCase):
 
         self.assertTrue(self.triggers(mouse.on_right_click, [(UP, RIGHT)]))
         self.assertTrue(self.triggers(mouse.on_middle_click, [(UP, MIDDLE)]))
+
+        self.assertTrue(self.triggers(mouse.on_double_right_click, [(DOUBLE, RIGHT)]))
+        self.assertFalse(self.triggers(mouse.on_double_right_click, [(DOUBLE, LEFT)]))
+        self.assertFalse(self.triggers(mouse.on_double_right_click, [(DOWN, LEFT)]))
+
+        self.assertTrue(self.triggers(mouse.on_middle_double_click, [(DOUBLE, MIDDLE)]))
 
     def test_wait(self):
         # If this fails it blocks. Unfortunately, but I see no other way of testing.
